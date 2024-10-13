@@ -3,7 +3,7 @@
 
 double FuncA::taylor_sine(double x) {
     double sine_value = 0.0;
-    int terms = 0;
+    int terms = 3;
 
     for (int n = 0; n < terms; ++n) {
         // Taylor series term: ((-1)^n * x^(2n+1)) / (2n+1)!
