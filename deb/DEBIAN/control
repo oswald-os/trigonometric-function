@@ -1,0 +1,5 @@
+Package: trigfunc
+Version: 0.1
+Architecture: all
+Maintainer: lakin.dmitry@lll.kpi.ua
+Description: The software computes a trigonometric function sin(x) using Taylor series.
