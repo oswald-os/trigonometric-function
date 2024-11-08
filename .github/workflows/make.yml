@@ -1,0 +1,17 @@
+name: Make CI
+
+on:
+  push:
+    branches: [ "branchMake" ]
+  pull_request:
+    branches: [ "branchMake" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: make
