@@ -2,9 +2,9 @@ name: Make CI
 
 on:
   push:
-    branches: [ "branchMake" ]
+    branches: [ "branchAutomake" ]
   pull_request:
-    branches: [ "branchMake" ]
+    branches: [ "branchAutomake" ]
   workflow_dispatch:
 
 jobs:
@@ -14,4 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: make
+    - name: ./configure
+      run: ./configure
+    - name: make
+      run: make
