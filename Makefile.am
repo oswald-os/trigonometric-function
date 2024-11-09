@@ -3,6 +3,8 @@ bin_PROGRAMS = trigFunc
 trigFunc_SOURCES = main.cpp FuncA.cpp FuncA.h
 dist_man_MANS = trigFunc.1
 
+SUBDIRS = tests
+
 CTRLF_DIR=$(CURDIR)/deb/DEBIAN
 CTRLF_NAME=$(CTRLF_DIR)/control
 

@@ -2,9 +2,9 @@ name: Make CI
 
 on:
   push:
-    branches: [ "branchAutoPackage" ]
+    branches: [ "branchAutoTest" ]
   pull_request:
-    branches: [ "branchAutoPackage" ]
+    branches: [ "branchAutoTest" ]
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,5 @@ jobs:
     - uses: actions/checkout@v4
     - name: ./configure
       run: ./configure
-    - name: make dist
-      run: make dist
-    - name: make deb
-      run: make deb
+    - name: Autotests
+      run: make check
