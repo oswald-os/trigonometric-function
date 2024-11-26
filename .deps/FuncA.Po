@@ -1,4 +1,4 @@
-../FuncA.o: ../FuncA.cpp /usr/include/stdc-predef.h .././FuncA.h \
+FuncA.o: FuncA.cpp /usr/include/stdc-predef.h FuncA.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -179,7 +179,7 @@
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc
 /usr/include/stdc-predef.h:
-.././FuncA.h:
+FuncA.h:
 /usr/include/c++/13/iostream:
 /usr/include/c++/13/bits/requires_hosted.h:
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:

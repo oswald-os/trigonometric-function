@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 bin_PROGRAMS = trigFunc
-trigFunc_SOURCES = main.cpp FuncA.cpp FuncA.h
+trigFunc_SOURCES = main.cpp FuncA.cpp FuncA.h HTTP_Server.cpp
 dist_man_MANS = trigFunc.1
 
 SUBDIRS = tests

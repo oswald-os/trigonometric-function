@@ -2,9 +2,9 @@ name: Make CI
 
 on:
   push:
-    branches: [ "branchAutoTest" ]
+    branches: [ "branchHTTPserver" ]
   pull_request:
-    branches: [ "branchAutoTest" ]
+    branches: [ "branchHTTPserver" ]
   workflow_dispatch:
 
 jobs:
@@ -16,5 +16,21 @@ jobs:
     - uses: actions/checkout@v4
     - name: ./configure
       run: ./configure
-    - name: Autotests
-      run: make check
+    - name: Build and Start Server
+      run: |
+        make
+        nohup ./funcA & # Start the server in the background
+        sleep 2 # Wait for the server to initialize
+    - name: Test elapsed time
+      run: |
+        # Send a request and capture the response
+        elapsed_time=$(curl -s 127.0.0.1:8081/compute)
+        echo "Elapsed time: ${elapsed_time} ms"
+
+        # Validate elapsed time range (5000-20000 ms)
+        if [ "$elapsed_time" -ge 5000 ] && [ "$elapsed_time" -le 20000 ]; then
+          echo "Elapsed time is within the acceptable range."
+        else
+          echo "Elapsed time is out of range! Expected 5000-20000 milliseconds."
+          exit 1
+        fi
