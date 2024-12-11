@@ -7,7 +7,6 @@ RUN apk add --no-cache \
     git
 RUN git clone \ 
     --branch branchHTTPservMutli \
-    --depth 1 \
     https://github.com/oswald-os/trigonometric-function.git \
     ./
 RUN ./configure
