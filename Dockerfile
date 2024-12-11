@@ -4,7 +4,8 @@ RUN apk add --no-cache \
     build-base \
     automake \
     autoconf \
-    git
+    git \
+    libtool
 RUN git clone \ 
     --branch branchHTTPservMutli \
     https://github.com/oswald-os/trigonometric-function.git \
