@@ -1,6 +1,18 @@
+FROM alpine AS build
+WORKDIR /app
+RUN apk add --no-cache \
+    build-base \
+    automake \
+    autoconf \
+    git
+RUN git clone \ 
+    --branch branchHTTPservMutli \
+    --depth 1 \
+    https://github.com/oswald-os/trigonometric-function.git \
+    ./
+RUN ./configure
+RUN make
+
 FROM alpine
-WORKDIR /home/trigFunc
-COPY ./trigFunc /usr/local/bin
-RUN apk add libstdc++
-RUN apk add libc6-compat
+COPY --from=build /app/trigFunc /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/trigFunc"]
