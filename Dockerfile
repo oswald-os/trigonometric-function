@@ -3,13 +3,8 @@ WORKDIR /app
 RUN apk add --no-cache \
     build-base \
     automake \
-    autoconf \
-    git \
-    libtool
-RUN git clone \ 
-    --branch branchHTTPservMutli \
-    https://github.com/oswald-os/trigonometric-function.git \
-    ./
+    autoconf
+COPY . .
 RUN ./configure
 RUN make
 
