@@ -55,9 +55,23 @@ jobs:
         username: ${{ vars.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }} 
 
-    - name: Build and Push Multi-Arch Docker Image
-      run: |
-        docker buildx build \
-          --platform linux/amd64,linux/arm64 \
-          -t oswaldus/httpserver:multi \
-          --push .
+    # - name: Build and Push Multi-Arch Docker Image
+    #   run: |
+    #     docker buildx build \
+    #       --platform linux/amd64,linux/arm64 \
+    #       -t oswaldus/httpserver:multi \
+    #       --push .
+
+    - name: Build Dockerfile image for amd64
+      run: docker build --platform=linux/amd64 -t oswaldus/httpserver:amd64
+
+    - name: Build Dockerfile image for arm64
+      run: docker build --platform=linux/arm64 -t oswaldus/httpserver:arm64
+
+    - name: Create Docker image manifest
+      run: docker manifest create oswaldus/httpserver:multi \
+            --amend oswaldus/httpserver:amd64 \
+            --amend oswaldus/httpserver:arm64
+
+    - name: Push manifest to Docker Hub
+      run: docker manifest push oswaldus/httpserver:multi
