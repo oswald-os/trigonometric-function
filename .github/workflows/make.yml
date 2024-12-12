@@ -63,10 +63,10 @@ jobs:
     #       --push .
 
     - name: Build Dockerfile image for amd64
-      run: docker build --platform=linux/amd64 -t oswaldus/httpserver:amd64
+      run: docker build --platform=linux/amd64 -t oswaldus/httpserver:amd64 --push .
 
     - name: Build Dockerfile image for arm64
-      run: docker build --platform=linux/arm64 -t oswaldus/httpserver:arm64
+      run: docker build --platform=linux/arm64 -t oswaldus/httpserver:arm64 --push .
 
     - name: Create Docker image manifest
       run: docker manifest create oswaldus/httpserver:multi \
