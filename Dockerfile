@@ -5,6 +5,7 @@ RUN apk add --no-cache \
     automake \
     autoconf
 COPY . .
+RUN autoreconf --install
 RUN ./configure
 RUN make
 
